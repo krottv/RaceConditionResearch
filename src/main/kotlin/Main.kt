@@ -1,15 +1,18 @@
-import coroutines.CoroutineRunnerImpl
+
+import data.IntSharedMutableData
+import data.MutableDataOutputImpl
+import data.NumOperations.NUM_TOTAL_OPERATIONS
 import thread.ThreadRunnerImpl
-import thread.ThreadedDataReentrantLock
+import thread.ThreadWorkReentrantLock
 import kotlin.system.measureTimeMillis
 
 fun main(args: Array<String>) {
-    val d = ThreadedDataReentrantLock(ThreadRunnerImpl(), isFair = false)
+    val d = ThreadWorkReentrantLock(ThreadRunnerImpl(), false, IntSharedMutableData())
     runAndPrint(d)
 }
 
 
-private fun runAndPrint(data: SharedMutableData) {
+private fun runAndPrint(data: ConcurrentWork) {
     val time = measureTimeMillis { data.run() }
-    MutableDataOutputImpl().print(data.mutableState, CoroutineRunnerImpl.NUM_TOTAL_OPERATIONS, time)
+    MutableDataOutputImpl().print(data.sharedMutableData.numOperations, NUM_TOTAL_OPERATIONS, time)
 }

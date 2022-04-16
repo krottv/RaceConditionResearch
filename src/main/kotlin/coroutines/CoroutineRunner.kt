@@ -1,5 +1,8 @@
 package coroutines
 
+import data.NumOperations.NUM_OPERATIONS
+import data.NumOperations.NUM_THREADS
+import data.NumOperations.NUM_TOTAL_OPERATIONS
 import kotlinx.coroutines.*
 
 interface CoroutineRunner {
@@ -27,10 +30,5 @@ class CoroutineRunnerImpl : CoroutineRunner {
     override val numTotalOperations: Int
         get() = NUM_TOTAL_OPERATIONS
 
-    companion object {
-        const val NUM_THREADS = 100
-        const val NUM_OPERATIONS = 1000
-        const val NUM_TOTAL_OPERATIONS = NUM_THREADS * NUM_OPERATIONS
-    }
 }
 

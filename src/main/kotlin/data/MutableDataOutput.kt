@@ -1,3 +1,5 @@
+package data
+
 interface MutableDataOutput {
     fun print(numOperationsActual: Int, numOperationsExpected: Int, timeTook: Long)
 }

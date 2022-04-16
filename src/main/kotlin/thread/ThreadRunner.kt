@@ -1,6 +1,7 @@
 package thread
 
 import coroutines.CoroutineRunnerImpl
+import data.NumOperations
 import java.util.concurrent.CountDownLatch
 
 interface ThreadRunner {
@@ -10,14 +11,14 @@ interface ThreadRunner {
 
 class ThreadRunnerImpl : ThreadRunner {
 
-    private val countDownLatch = CountDownLatch(CoroutineRunnerImpl.NUM_THREADS)
+    private val countDownLatch = CountDownLatch(NumOperations.NUM_THREADS)
 
     override fun run(action: () -> Unit) {
 
-        repeat(CoroutineRunnerImpl.NUM_THREADS) {
+        repeat(NumOperations.NUM_THREADS) {
             val childThread = Thread {
 
-                repeat(CoroutineRunnerImpl.NUM_OPERATIONS) {
+                repeat(NumOperations.NUM_OPERATIONS) {
                     action()
                 }
 
@@ -31,6 +32,6 @@ class ThreadRunnerImpl : ThreadRunner {
     }
 
     override val numTotalOperations: Int
-        get() = CoroutineRunnerImpl.NUM_TOTAL_OPERATIONS
+        get() = NumOperations.NUM_TOTAL_OPERATIONS
 
 }

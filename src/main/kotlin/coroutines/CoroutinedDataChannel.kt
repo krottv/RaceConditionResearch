@@ -1,12 +1,13 @@
 package coroutines
 
+import data.SharedMutableData
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.launch
 
-class CoroutinedDataChannel(coroutineRunner: CoroutineRunner) :
-    CoroutinedData(coroutineRunner) {
+class CoroutinedDataChannel(coroutineRunner: CoroutineRunner, sharedMutableData: SharedMutableData) :
+    CoroutinedData(coroutineRunner, sharedMutableData) {
 
     private val channel = Channel<Int>(capacity = 100)
 
@@ -20,7 +21,7 @@ class CoroutinedDataChannel(coroutineRunner: CoroutineRunner) :
             while (!channel.isClosedForReceive) {
                 val i = channel.receiveCatching().getOrNull()
                 if (i != null)
-                    mutableState += i
+                    sharedMutableData.increment()
                 else
                     break
             }

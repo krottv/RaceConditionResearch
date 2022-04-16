@@ -1,13 +1,15 @@
 package coroutines
 
+import data.IntSharedMutableData
+import data.SharedMutableData
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.SendChannel
 import kotlinx.coroutines.channels.actor
 
-class CoroutinedDataActor(coroutineRunner: CoroutineRunner) :
-    CoroutinedData(coroutineRunner) {
+class CoroutinedDataActor(coroutineRunner: CoroutineRunner, sharedMutableData: SharedMutableData) :
+    CoroutinedData(coroutineRunner, sharedMutableData) {
 
     private lateinit var channel: SendChannel<ActorMessage>
 
@@ -29,7 +31,7 @@ class CoroutinedDataActor(coroutineRunner: CoroutineRunner) :
     override suspend fun finished() {
         val completable = CompletableDeferred<Int>()
         channel.send(ActorMessage.GetData(completable))
-        this.mutableState = completable.await()
+        this.sharedMutableData = IntSharedMutableData(completable.await())
         channel.close()
     }
 
