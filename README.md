@@ -1,8 +1,9 @@
 # Race Condition Research
-Researching best ways to fix race conditions with Threads and Coroutines
+Researching the best ways to fix race conditions with Threads and Coroutines. 
+Different ways to avoid race conditions with Integer increments and collection modifications are explored
 
 ## Usage
-Run CoroutineDataTest or ThreadDataTest
+Run functions in test folder
 
 ## Authors and acknowledgment
 The main idea is taken from
