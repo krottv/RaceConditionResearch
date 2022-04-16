@@ -14,5 +14,5 @@ fun main(args: Array<String>) {
 
 private fun runAndPrint(data: ConcurrentWork) {
     val time = measureTimeMillis { data.run() }
-    MutableDataOutputImpl().print(data.sharedMutableData.numOperations, NUM_TOTAL_OPERATIONS, time)
+    MutableDataOutputImpl().print(data, NUM_TOTAL_OPERATIONS, time)
 }

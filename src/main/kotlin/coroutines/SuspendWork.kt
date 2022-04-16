@@ -5,8 +5,8 @@ import data.SharedMutableData
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.runBlocking
 
-open class CoroutinedData (
-    private val coroutineRunner: CoroutineRunner,
+open class SuspendWork (
+    private val suspendRunner: SuspendRunner,
     override var sharedMutableData: SharedMutableData
 ) : ConcurrentWork {
 
@@ -14,7 +14,7 @@ open class CoroutinedData (
     override fun run() {
         runBlocking {
             started()
-            coroutineRunner.run {
+            suspendRunner.run {
                 incrementState()
             }
             finished()

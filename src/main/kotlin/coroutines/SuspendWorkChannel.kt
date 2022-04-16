@@ -6,8 +6,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.launch
 
-class CoroutinedDataChannel(coroutineRunner: CoroutineRunner, sharedMutableData: SharedMutableData) :
-    CoroutinedData(coroutineRunner, sharedMutableData) {
+class SuspendWorkChannel(suspendRunner: SuspendRunner, sharedMutableData: SharedMutableData) :
+    SuspendWork(suspendRunner, sharedMutableData) {
 
     private val channel = Channel<Int>(capacity = 100)
 

@@ -1,6 +1,6 @@
-import data.SharedMutableDataOutput
+import data.SharedMutableData
 
 interface ConcurrentWork {
-    val sharedMutableData: SharedMutableDataOutput
+    val sharedMutableData: SharedMutableData
     fun run()
 }

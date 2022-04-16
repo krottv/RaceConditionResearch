@@ -5,7 +5,7 @@ import thread.*
 import kotlin.test.Test
 
 @FixMethodOrder
-class ThreadDataTest {
+class ThreadWorkTest {
 
     @Test(timeout = ConcurrentTestUtils.TEST_TIMEOUT)
     fun testThreadBasic() {

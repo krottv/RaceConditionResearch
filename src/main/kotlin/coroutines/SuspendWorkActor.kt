@@ -8,8 +8,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.SendChannel
 import kotlinx.coroutines.channels.actor
 
-class CoroutinedDataActor(coroutineRunner: CoroutineRunner, sharedMutableData: SharedMutableData) :
-    CoroutinedData(coroutineRunner, sharedMutableData) {
+class SuspendWorkActor(suspendRunner: SuspendRunner, sharedMutableData: SharedMutableData) :
+    SuspendWork(suspendRunner, sharedMutableData) {
 
     private lateinit var channel: SendChannel<ActorMessage>
 

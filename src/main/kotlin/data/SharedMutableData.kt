@@ -1,9 +1,6 @@
 package data
 
-interface SharedMutableDataOutput {
-    val numOperations: Int
-}
-
-interface SharedMutableData: SharedMutableDataOutput {
+interface SharedMutableData {
     fun increment()
+    val numOperations: Int
 }

@@ -5,12 +5,12 @@ import data.NumOperations.NUM_THREADS
 import data.NumOperations.NUM_TOTAL_OPERATIONS
 import kotlinx.coroutines.*
 
-interface CoroutineRunner {
+interface SuspendRunner {
     suspend fun run(action: suspend () -> Unit)
     val numTotalOperations: Int
 }
 
-class CoroutineRunnerImpl : CoroutineRunner {
+class SuspendRunnerImpl : SuspendRunner {
 
     override suspend fun run(action: suspend () -> Unit) {
 
