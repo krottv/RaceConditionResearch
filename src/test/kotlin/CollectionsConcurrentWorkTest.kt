@@ -49,7 +49,7 @@ class CollectionsConcurrentWorkTest {
         ConcurrentTestUtils.testClass(
             SuspendWork(SuspendRunnerImpl(), SynchronizedMapSharedData()),
             canBeLong = false,
-            expectedToBeUnstable = false
+            expectedToBeUnstable = true
         )
     }
 
